@@ -44,33 +44,33 @@ public class RabbitMQConsumer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RabbitMQConsumer.class);
 
-//    @RabbitListener(queues = {"${rabbit.queue.save_request}"})
-//    public void save_request_consume(RequestDto message) throws JsonProcessingException {
-//        System.out.println("Message: "+ message);
-//
-//        requestService.createRequestEquipment(message);
-//    }
-//
-//    @RabbitListener(queues = {"${rabbit.queue.push_notification}"})
-//    public void push_notification_consume(RequestDto message) {
-//        Role role = roleCustomRepo.findByName("ADMIN").get();
-//
-//        List<User> listUserAdmin = userRepository.findByRole(role);
-//
-//        listUserAdmin.forEach(user -> {
-//            NotificationDto notificationDto = new NotificationDto();
-//            notificationDto.setDescription("You have new request from user!");
-//            notificationDto.setUserOwnerId(user.getId());
-//            notificationDto.setRead(false);
-//            notificationDto.setType("REQUEST");
-//            notificationDto.setCreatedAt(new Date());
-//
-//            notificationService.createNotification(notificationDto);
-//            try {
-//                fcmService.sendFCMNotification(user.getDeviceToken());
-//            } catch (FirebaseMessagingException e) {
-//                throw new RuntimeException(e);
-//            }
-//        });
-//    }
+    @RabbitListener(queues = {"${rabbit.queue.save_request}"})
+    public void save_request_consume(RequestDto message) throws JsonProcessingException {
+        System.out.println("Message: "+ message);
+
+        requestService.createRequestEquipment(message);
+    }
+
+    @RabbitListener(queues = {"${rabbit.queue.push_notification}"})
+    public void push_notification_consume(RequestDto message) {
+        Role role = roleCustomRepo.findByName("ADMIN").get();
+
+        List<User> listUserAdmin = userRepository.findByRole(role);
+
+        listUserAdmin.forEach(user -> {
+            NotificationDto notificationDto = new NotificationDto();
+            notificationDto.setDescription("You have new request from user!");
+            notificationDto.setUserOwnerId(user.getId());
+            notificationDto.setRead(false);
+            notificationDto.setType("REQUEST");
+            notificationDto.setCreatedAt(new Date());
+
+            notificationService.createNotification(notificationDto);
+            try {
+                fcmService.sendFCMNotification(user.getDeviceToken());
+            } catch (FirebaseMessagingException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
 }
