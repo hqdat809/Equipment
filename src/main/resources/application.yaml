@@ -7,7 +7,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    url: jdbc:mysql://containers-us-west-152.railway.app:6262/railway
+    url: jdbc:mysql://containers-us-west-152.railway.app:6764/railway
     password: FSt3fktWu7uF5OcXHy0z
   jpa:
     hibernate:
