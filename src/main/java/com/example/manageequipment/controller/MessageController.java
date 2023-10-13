@@ -28,7 +28,7 @@ public class MessageController {
     @PreAuthorize("hasAnyAuthority('USER')")
     @PostMapping("/publish")
     public ResponseEntity<String> sendMessage(@RequestParam("message") String message, @RequestBody RequestDto requestDto) throws JsonProcessingException {
-        producer.sendMessage(requestDto);
+//        producer.sendMessage(requestDto);
         return ResponseEntity.ok("Message send to RabbitMQ");
     }
 

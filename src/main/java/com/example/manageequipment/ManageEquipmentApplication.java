@@ -23,6 +23,7 @@ public class ManageEquipmentApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ManageEquipmentApplication.class, args);
+
     }
 
     @Bean
@@ -35,7 +36,6 @@ public class ManageEquipmentApplication {
         return cloudinary;
     }
 
-    private static Connection connection = null;
 
 //    @Bean
 //    public static Connection getConnection() {

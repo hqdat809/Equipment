@@ -71,6 +71,7 @@ public class RabbitMQConfig {
         return rabbitTemplate;
     }
 
+
 //    @Bean
 //    public CachingConnectionFactory connectionFactory() {
 //        CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
